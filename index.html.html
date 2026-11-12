@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Mohammed Abdul-Waheed Oshiozokhai, Computer Science student and front-end developer.">
+<title>Mohammed Oshiozokhai | Front-End Developer Portfolio</title>
+<style>
+:root {
+  --bg: #ffffff; --text: #14213d; --muted: #4a5468; --surface: #f7f5ef; --border: #ddd8cb;
+  --accent: #c55f0d; --accent-text: #ffffff; --header: rgba(255,255,255,0.92); --navy: #14213d; --on-navy: #f7f5ef;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1626; --text: #f1efe8; --muted: #aab3c5; --surface: #18223a; --border: #2a3550;
+    --accent: #f2a45c; --accent-text: #0f1626; --header: rgba(15,22,38,0.92); --navy: #18223a; --on-navy: #f1efe8;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1626; --text: #f1efe8; --muted: #aab3c5; --surface: #18223a; --border: #2a3550;
+  --accent: #f2a45c; --accent-text: #0f1626; --header: rgba(15,22,38,0.92); --navy: #18223a; --on-navy: #f1efe8;
+  color-scheme: dark;
+}
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--header); z-index: 10; }
+h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; line-height: 1.15; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { width: min(1000px, 100% - 40px); margin-inline: auto; }
+
+/* Header */
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--header); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; }
+.logo { font-family: Georgia, serif; font-weight: 700; font-size: 1.15rem; text-decoration: none; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 4px; overflow-x: auto; }
+nav a { text-decoration: none; padding: 8px 12px; border-radius: 999px; font-size: 0.95rem; color: var(--muted); white-space: nowrap; transition: background .2s, color .2s; }
+nav a:hover { background: var(--surface); color: var(--text); }
+
+/* Hero */
+.hero { padding: 72px 0 64px; }
+.hero .wrap { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; margin: 0 0 12px; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); margin-bottom: 18px; }
+.hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 54ch; margin: 0 0 28px; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-block; padding: 12px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; border: 2px solid var(--accent); transition: transform .2s, box-shadow .2s, background .2s; }
+.btn.primary { background: var(--accent); color: var(--accent-text); }
+.btn.ghost { color: var(--text); border-color: var(--border); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.15); }
+.avatar { width: 220px; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: var(--on-navy); font-family: Georgia, serif; font-size: 5rem; font-weight: 700; border: 8px solid var(--surface); box-shadow: 0 0 0 3px var(--accent); }
+
+/* Sections */
+section { padding: 64px 0; }
+section:nth-of-type(even) { background: var(--surface); }
+.title { font-size: clamp(1.7rem, 4vw, 2.3rem); margin-bottom: 8px; }
+.sub { color: var(--muted); margin: 0 0 36px; max-width: 60ch; }
+.about { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+.about p { margin: 0 0 16px; }
+.facts { list-style: none; margin: 0; padding: 24px; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; display: grid; gap: 14px; align-self: start; }
+.facts b { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.card { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 26px; transition: transform .25s, box-shadow .25s, border-color .25s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.12); border-color: var(--accent); }
+section:nth-of-type(even) .card { background: var(--bg); }
+.card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+.card p { margin: 0; color: var(--muted); }
+.tag { display: inline-block; margin-top: 14px; padding: 4px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-size: .8rem; font-weight: 600; }
+.bar-skill { margin-top: 14px; height: 8px; border-radius: 999px; background: var(--surface); overflow: hidden; border: 1px solid var(--border); }
+.bar-skill i { display: block; height: 100%; background: var(--accent); }
+
+/* Timeline */
+.timeline { list-style: none; margin: 0; padding: 0 0 0 28px; border-left: 3px solid var(--accent); display: grid; gap: 28px; }
+.timeline li { position: relative; }
+.timeline li::before { content: ""; position: absolute; left: -38px; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); }
+.timeline small { color: var(--accent); font-weight: 700; letter-spacing: .05em; }
+.timeline h3 { font-size: 1.2rem; margin: 4px 0; }
+.timeline p { margin: 0; color: var(--muted); }
+
+/* Contact */
+.contact { text-align: center; }
+.contact .sub { margin-inline: auto; }
+.contact .btns { justify-content: center; }
+footer { padding: 28px 0; text-align: center; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--border); }
+
+@media (max-width: 760px) {
+  .hero { padding-top: 40px; }
+  .hero .wrap, .about { grid-template-columns: 1fr; }
+  .avatar { width: 150px; font-size: 3.4rem; order: -1; }
+  .bar { flex-direction: column; align-items: flex-start; gap: 4px; }
+  nav { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Mohammed<span>.</span>dev</a>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="name">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Front-End Developer in training</p>
+        <h1 id="name">Hi, I’m Mohammed Abdul-Waheed Oshiozokhai.</h1>
+        <p class="lead">A Computer Science student at Lead City University who builds clean, responsive and accessible websites with HTML and CSS.</p>
+        <div class="btns">
+          <a class="btn primary" href="#projects">View my work</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="avatar" role="img" aria-label="Initials MO">MO</div>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <h2 class="title" id="about-title">About me</h2>
+      <p class="sub">A quick look at who I am and what I’m learning.</p>
+      <div class="about">
+        <div>
+          <p>I’m a Computer Science student who enjoys turning ideas into pages people can actually use. During my SIWES placement I spent 16 weeks learning front-end development from the ground up, from writing my first HTML document to building fully responsive layouts.</p>
+          <p>I care about semantic markup, readable code and designs that work on every screen, from a small phone to a wide desktop monitor.</p>
+        </div>
+        <ul class="facts">
+          <li><b>University</b>Lead City University</li>
+          <li><b>Course</b>BSc Computer Science</li>
+          <li><b>Training</b>SIWES II, Globaltech World Computer Institute</li>
+          <li><b>Focus</b>HTML, CSS, responsive design</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <h2 class="title" id="skills-title">Skills</h2>
+      <p class="sub">What I practised during my training.</p>
+      <div class="grid">
+        <article class="card"><h3>HTML5</h3><p>Semantic structure, forms, tables, media and accessibility.</p><div class="bar-skill" aria-hidden="true"><i style="width:85%"></i></div></article>
+        <article class="card"><h3>CSS3</h3><p>Selectors, box model, typography, transitions and animations.</p><div class="bar-skill" aria-hidden="true"><i style="width:80%"></i></div></article>
+        <article class="card"><h3>Flexbox and Grid</h3><p>Modern one- and two-dimensional page layouts.</p><div class="bar-skill" aria-hidden="true"><i style="width:80%"></i></div></article>
+        <article class="card"><h3>Responsive design</h3><p>Mobile-first pages with media queries and fluid sizing.</p><div class="bar-skill" aria-hidden="true"><i style="width:82%"></i></div></article>
+        <article class="card"><h3>Git and GitHub</h3><p>Version control and deploying sites online.</p><div class="bar-skill" aria-hidden="true"><i style="width:65%"></i></div></article>
+        <article class="card"><h3>DevTools and testing</h3><p>Debugging layouts and checking performance and accessibility.</p><div class="bar-skill" aria-hidden="true"><i style="width:70%"></i></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+      <h2 class="title" id="projects-title">Projects</h2>
+      <p class="sub">Pages and components I built during my 16-week training.</p>
+      <div class="grid">
+        <article class="card"><h3>Multi-page website</h3><p>A structured site with home, about, services and contact pages, validated with the W3C validator.</p><span class="tag">HTML</span> <span class="tag">SEO</span></article>
+        <article class="card"><h3>Registration form</h3><p>An accessible form with labels, input types and built-in validation, styled for every screen size.</p><span class="tag">Forms</span> <span class="tag">CSS</span></article>
+        <article class="card"><h3>Responsive layouts</h3><p>A navbar, features section and image gallery built with Flexbox and CSS Grid.</p><span class="tag">Flexbox</span> <span class="tag">Grid</span></article>
+        <article class="card"><h3>Animated components</h3><p>Buttons, cards and a dark-mode theme using variables, transitions and keyframes.</p><span class="tag">Animation</span> <span class="tag">Theming</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey" aria-labelledby="journey-title">
+    <div class="wrap">
+      <h2 class="title" id="journey-title">My SIWES journey</h2>
+      <p class="sub">Sixteen weeks at Globaltech World Computer Institute.</p>
+      <ol class="timeline">
+        <li><small>WEEKS 1 TO 6</small><h3>HTML and CSS basics</h3><p>Dev setup, document structure, text, media, forms, semantics, accessibility, selectors and typography.</p></li>
+        <li><small>WEEKS 7 TO 10</small><h3>CSS core</h3><p>Box model, positioning, Flexbox, CSS Grid and responsive design.</p></li>
+        <li><small>WEEKS 11 TO 14</small><h3>Advanced CSS</h3><p>Variables, transitions, animations, dark mode, debugging and performance.</p></li>
+        <li><small>WEEKS 15 AND 16</small><h3>Capstone project</h3><p>Designed, built, tested and deployed this responsive website.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <h2 class="title" id="contact-title">Let’s connect</h2>
+      <p class="sub">I’m open to internships, collaborations and opportunities to keep growing as a developer.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:your.email@example.com">Email me</a>
+        <a class="btn ghost" href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Mohammed Abdul-Waheed Oshiozokhai. Built with HTML and CSS.</div>
+</footer>
+
+</body>
+</html>
